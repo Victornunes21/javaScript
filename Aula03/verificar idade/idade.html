@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificador de Idade</title>
+</head>
+<body>
+    <h3>Vou descobrir sua idade!</h3>
+    Data: <input type="date" id="datadeNascimento">
+    <button onclick="Calcular()">Calcular</button>
+
+    <script>
+        function Calcular(){
+            var datadeNascimento = new Date(document.getElementById("datadeNascimento").value);
+            var dataAtual = new Date();
+
+            var diferenca = dataAtual - datadeNascimento;
+            var idade = Math.floor(diferenca / (1000 * 60 * 60 * 24 * 365.25));
+
+            // Adiciona um alert com a idade calculada
+            alert("Você tem " + idade + " anos!");
+        } 
+    </script>
+</body>
+</html>
