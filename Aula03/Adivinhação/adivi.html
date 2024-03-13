@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de Adivinhação</title>
+</head>
+<body>
+    <h3>Tente adivinhar o número que eu estou pensando</h3>
+    <input id="numero" type="number"> <br><br>
+    <button onclick="Verificar()">Verificar</button>
+
+
+    <script>
+  
+        const numeroAleatorio = Math.floor(Math.random() * 10) + 1;
+
+        function Verificar(){
+            const numeroDigitado = parseInt(document.getElementById('numero').value);
+
+            if (numeroAleatorio === numeroDigitado){
+                alert("Você acertou!");
+            } else if (numeroAleatorio < numeroDigitado) {
+                alert("Você errou! Tente um número menor.");
+            } else {
+                alert("Você errou! Tente um número maior.");
+            }
+        }
+    </script>
+</body>
+</html>
