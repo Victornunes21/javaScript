@@ -15,27 +15,22 @@
     <p id="guessedLetters"></p>
 
     <script>
-        // Lista de palavras para o jogo
+
         const palavras = ["ABACAXI", "BANANA", "MORANGO", "LARANJA", "UVA"];
 
-        // Escolhe aleatoriamente uma palavra da lista
         let palavraSecreta = palavras[Math.floor(Math.random() * palavras.length)];
 
-        // Inicializa a palavra escondida com traços
         let palavraEscondida = "";
         for (let i = 0; i < palavraSecreta.length; i++) {
             palavraEscondida += "-";
         }
         document.getElementById("wordDisplay").textContent = palavraEscondida;
 
-        // Lista para armazenar letras já digitadas
         const letrasDigitadas = [];
 
-        // Número máximo de tentativas permitidas
         const maxTentativas = 6;
         let tentativas = 0;
 
-        // Função para verificar se a letra está na palavra
         function checkLetter() {
             if (tentativas >= maxTentativas) {
                 alert("Você excedeu o número máximo de tentativas. A palavra secreta era: " + palavraSecreta);
@@ -45,19 +40,16 @@
 
             const letra = document.getElementById("guessInput").value.toUpperCase();
 
-            // Verifica se a letra já foi digitada
             if (letrasDigitadas.includes(letra)) {
                 alert("Esta letra já foi digitada. Por favor, tente outra.");
                 return;
             }
 
-            // Adiciona a letra à lista de letras digitadas
             letrasDigitadas.push(letra);
 
             let novaPalavraEscondida = "";
             let acertou = false;
 
-            // Verifica se a letra está na palavra
             for (let i = 0; i < palavraSecreta.length; i++) {
                 if (palavraSecreta[i] === letra) {
                     novaPalavraEscondida += letra;
@@ -67,28 +59,23 @@
                 }
             }
 
-            // Se a letra não estiver na palavra, incrementa o número de tentativas
             if (!acertou) {
                 tentativas++;
             }
 
-            // Atualiza a palavra escondida na tela
             palavraEscondida = novaPalavraEscondida;
             document.getElementById("wordDisplay").textContent = palavraEscondida;
 
-            // Atualiza a lista de letras digitadas
             document.getElementById("guessedLetters").textContent = letrasDigitadas.join(' ');
 
-            // Limpa o campo de entrada
             document.getElementById("guessInput").value = "";
 
-            // Verifica se o jogador ganhou
+ 
             if (!palavraEscondida.includes("-")) {
                 alert("Parabéns! Você acertou a palavra!");
                 location.reload();
             }
 
-            // Se o jogador excedeu o número máximo de tentativas, mostra a palavra secreta e recarrega o jogo
             if (tentativas >= maxTentativas) {
                 alert("Você excedeu o número máximo de tentativas. A palavra secreta era: " + palavraSecreta);
                 location.reload();
