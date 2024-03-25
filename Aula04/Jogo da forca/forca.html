@@ -28,7 +28,7 @@
 
         const letrasDigitadas = [];
 
-        const maxTentativas = 6;
+        const maxTentativas = 9;
         let tentativas = 0;
 
         function checkLetter() {
@@ -72,7 +72,7 @@
 
  
             if (!palavraEscondida.includes("-")) {
-                alert("Parabéns! Você acertou a palavra!");
+                alert("Parabéns! Você acertou a palavra! A palavra era "  + palavraSecreta);
                 location.reload();
             }
 
