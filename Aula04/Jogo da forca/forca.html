@@ -15,9 +15,7 @@
     <p id="guessedLetters"></p>
 
     <script>
-
         const palavras = ["ABACAXI", "BANANA", "MORANGO", "LARANJA", "UVA"];
-
         let palavraSecreta = palavras[Math.floor(Math.random() * palavras.length)];
 
         let palavraEscondida = "";
@@ -27,7 +25,6 @@
         document.getElementById("wordDisplay").textContent = palavraEscondida;
 
         const letrasDigitadas = [];
-
         const maxTentativas = 9;
         let tentativas = 0;
 
@@ -37,7 +34,6 @@
                 location.reload();
                 return;
             }
-
             const letra = document.getElementById("guessInput").value.toUpperCase();
 
             if (letrasDigitadas.includes(letra)) {
@@ -46,7 +42,6 @@
             }
 
             letrasDigitadas.push(letra);
-
             let novaPalavraEscondida = "";
             let acertou = false;
 
@@ -58,24 +53,18 @@
                     novaPalavraEscondida += palavraEscondida[i];
                 }
             }
-
             if (!acertou) {
                 tentativas++;
             }
-
             palavraEscondida = novaPalavraEscondida;
             document.getElementById("wordDisplay").textContent = palavraEscondida;
-
             document.getElementById("guessedLetters").textContent = letrasDigitadas.join(' ');
-
             document.getElementById("guessInput").value = "";
 
- 
             if (!palavraEscondida.includes("-")) {
                 alert("Parabéns! Você acertou a palavra! A palavra era "  + palavraSecreta);
                 location.reload();
             }
-
             if (tentativas >= maxTentativas) {
                 alert("Você excedeu o número máximo de tentativas. A palavra secreta era: " + palavraSecreta);
                 location.reload();
